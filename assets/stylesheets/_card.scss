@@ -14,4 +14,16 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 20px;
   margin: 10px auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-category:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.card-category.selected {
+  // border: solid 6px red;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  transform: translateY(-2px);
 }
