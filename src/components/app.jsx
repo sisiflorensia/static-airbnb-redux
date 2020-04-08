@@ -6,7 +6,7 @@ import Map from '../containers/map';
 class App extends Component {
   render() {
     return (
-    <div className="row">
+    <div className="row justify-content-around">
       <FlatList />
       <Map />
     </div>

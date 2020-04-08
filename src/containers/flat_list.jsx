@@ -1,20 +1,45 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setFlats } from '../actions';
+
+import Flat from '../components/flat';
+
 
 class FlatList extends Component {
-  static defaultProps = { flats: [{
-    "name": "Charm at the Steps of Montmartre",
-    "imageUrl": "https://raw.githubusercontent.com/ lewagon/flats-boilerplate/master/images/flat1.jpg",
-    "price": 164,
-    "priceCurrency": "EUR" }]
+  // static defaultProps = { flats:
+  //   [{
+  //     "name": "Charm at the Steps of Montmartre",
+  //     "imageUrl": "https://images.unsplash.com/photo-1580237072617-771c3ecc4a24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+  //     "price": 164,
+  //     "priceCurrency": "EUR"
+  //   }]
+  // }
+
+  componentWillMount() {
+   this.props.setFlats();
   }
 
   render() {
     return (
       <div className="flat-list col-sm-7">
-        To Do flat list
+        {this.props.flats.map((flat) => <Flat flat={flat} key={flat.name} />)}
       </div>
     );
   }
 }
 
-export default FlatList;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setFlats: setFlats },
+    dispatch
+  );
+}
+
+function mapReduxStateToProps(reduxState) {
+  return {
+    flats: reduxState.flats
+  };
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(FlatList);
