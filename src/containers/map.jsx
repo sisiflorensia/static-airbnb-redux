@@ -8,12 +8,19 @@ class Map extends Component {
       height: '100vh'
     };
 
+    const markerStyleInitial = {
+      width: '10px', height: '10px', backgroundColor: 'blue', borderRadius: '50%'
+    };
+
     const markerStyle = {
       width: '20px', height: '20px', backgroundColor: 'red', borderRadius: '50%'
     };
 
-    let marker = null;
+    let marker = <div
+                style={markerStyleInitial}
+                lat={48.856614} lng={2.352222} />;
     let center = { lat: 48.856614, lng: 2.352222 };
+    console.log(marker)
 
     if (this.props.selectedFlat) {
       marker = <div
@@ -22,6 +29,7 @@ class Map extends Component {
                 lng={this.props.selectedFlat.lng} />;
       center = { lat: this.props.selectedFlat.lat, lng: this.props.selectedFlat.lng };
     }
+    console.log(marker)
 
     return (
       <div className="map col-sm-4" style={style}>
